@@ -4,8 +4,8 @@ FitLog is a workout tracking web app where users can browse a workout library, b
 
 **Train hard, log honest.**
 
-🔗 **Live Link:** [https://a06-fit-log.vercel.app/](https://a06-fit-log.vercel.app/)
-📦 **GitHub Repository:** [https://github.com/mehedynoman11/a06-fit-log](https://github.com/mehedynoman11/a06-fit-log)
+🔗 **Live Link:** [https://b14-a06-fit-log.vercel.app/](https://b14-a06-fit-log.vercel.app/)
+📦 **GitHub Repository:** [https://github.com/bdshroud/b14-a06-fit-log](https://github.com/bdshroud/b14-a06-fit-log)
 
 ---
 
