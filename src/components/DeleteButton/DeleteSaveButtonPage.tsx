@@ -1,31 +1,43 @@
-'use client'
-import { WorkoutContext } from '@/context/workoutContext';
-import { IWorkout } from '@/type/workoutType';
-import React, { useContext } from 'react';
+'use client';
+
+import { useContext } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import { toast } from 'react-toastify';
 
-interface DeleteSaveButtonPageProps{
+import { WorkoutContext } from '@/context/workoutContext';
+import { IWorkout } from '@/type/workoutType';
+
+interface DeleteSaveButtonProps {
     workout: IWorkout;
 }
 
-const DeleteSaveButtonPage = ({workout}:DeleteSaveButtonPageProps) => {
+const DeleteSaveButton = ({
+    workout,
+}: DeleteSaveButtonProps) => {
     const { removeFromSaved } = useContext(WorkoutContext);
 
     const handleDelete = () => {
         removeFromSaved(workout);
         toast.success('Removed from saved');
-    }
+    };
 
     return (
         <button
             type="button"
             onClick={handleDelete}
             aria-label={`Remove ${workout.name} from saved`}
-            className="flex text-lg cursor-pointer">
-            <RxCross2/>
+            className="
+                flex items-center justify-center
+                rounded-full p-2
+                text-gray-400
+                transition-all duration-300
+                hover:bg-red-500/10
+                hover:text-red-400
+            "
+        >
+            <RxCross2 size={20} />
         </button>
     );
 };
 
-export default DeleteSaveButtonPage;
+export default DeleteSaveButton;

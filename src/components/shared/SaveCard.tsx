@@ -1,7 +1,9 @@
-import { IWorkout } from '@/type/workoutType';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaRegClock, FaRegStar } from 'react-icons/fa';
+
+import { IWorkout } from '@/type/workoutType';
+
 import DeleteSaveButtonPage from '../DeleteButton/DeleteSaveButtonPage';
 
 interface SaveCardProps {
@@ -10,68 +12,61 @@ interface SaveCardProps {
 
 const SaveCard = ({ workout }: SaveCardProps) => {
     return (
-        <div className="flex flex-col md:flex-row md:justify-between items-center md:items-center gap-4 p-4 border-gray-700 border-2 bg-[#14171E] rounded-2xl">
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto text-center sm:text-left">
-                <Image
-                    className="h-auto rounded-xl w-20 h-20 sm:w-[100px] sm:h-[100px] object-cover shrink-0"
-                    src={workout.image}
-                    height={100}
-                    width={100}
-                    loading="eager"
-                    alt="Workout"
-                />
-                <div className="flex flex-col justify-center items-center sm:items-start min-w-0">
-                    <h1 className="text-lg sm:text-xl font-bold truncate max-w-[220px] sm:max-w-none">
-                        {workout.name}
-                    </h1>
-                    <p className="text-gray-400 text-sm">{workout.equipment}</p>
-                    <div className="text-xs space-x-2 text-[#C2F800] flex items-center flex-wrap justify-center sm:justify-start mt-1">
-                        <p className="flex items-center gap-1 font-semibold whitespace-nowrap">
-                            <FaRegClock />
-                            {workout.duration} min
+        <article className="fitlog-card p-4">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+                {/* Workout information */}
+                <div className="flex w-full flex-col items-center gap-4 text-center sm:flex-row sm:text-left md:w-auto">
+                    <Image
+                        src={workout.image}
+                        alt={workout.name}
+                        width={100}
+                        height={100}
+                        className="h-20 w-20 shrink-0 rounded-xl object-cover sm:h-[100px] sm:w-[100px]"
+                    />
+
+                    <div className="min-w-0">
+                        <h2 className="truncate text-lg font-bold uppercase sm:text-xl">
+                            {workout.name}
+                        </h2>
+
+                        <p className="mt-1 text-sm text-gray-400">
+                            {workout.equipment}
                         </p>
-                        <p className="flex items-center font-semibold whitespace-nowrap">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="h-5 w-5 sm:h-6 sm:w-6"
-                            >
-                                <path
-                                    d="M12.5 3c.5 3-1.5 4.5-2.5 6
-               1.5-.5 3-1.5 3.5-3
-               2 2 4.5 4.5 4.5 8
-               0 3.87-2.91 7-6.5 7
-               S5 17.87 5 14
-               c0-3 1.5-5.5 4-7.5
-               -.5 2.5.5 3.5 1.5 4
-               .5-2 2-4.5 2-7.5Z"
-                                />
-                                <path d="M10 17.5c0-1.5 1-2.5 2-3.5 1 1 2 2 2 3.5a2 2 0 0 1-4 0Z" />
-                            </svg>
-                            {workout.caloriesBurned} Kcal
-                        </p>
-                        <p className="flex items-center gap-1 font-semibold whitespace-nowrap">
-                            <FaRegStar />
-                            {workout.rating}
-                        </p>
+
+                        {/* Stats */}
+                        <div className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs text-[#C2F800] sm:justify-start">
+                            <span className="flex items-center gap-1 font-semibold">
+                                <FaRegClock />
+                                {workout.duration} min
+                            </span>
+
+                            <span className="flex items-center gap-1 font-semibold">
+                                <span aria-hidden="true">🔥</span>
+                                {workout.caloriesBurned} Kcal
+                            </span>
+
+                            <span className="flex items-center gap-1 font-semibold">
+                                <FaRegStar />
+                                {workout.rating}
+                            </span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 items-center w-full md:w-auto">
-                <Link href={`/exercise/${workout.id}`}>
-                <button className="w-full sm:w-auto rounded-4xl border border-gray-600 px-4 py-2 cursor-pointer text-xs md:text-sm font-semibold">
-                    View Details
-                </button>
-                </Link>
-                <DeleteSaveButtonPage workout={workout}/>
+                {/* Actions */}
+                <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto">
+                    <Link
+                        href={`/exercise/${workout.id}`}
+                        className="fitlog-btn-secondary w-full sm:w-auto"
+                    >
+                        View Details
+                    </Link>
+
+                    <DeleteSaveButtonPage workout={workout} />
+                </div>
             </div>
-        </div>
+        </article>
     );
 };
 
