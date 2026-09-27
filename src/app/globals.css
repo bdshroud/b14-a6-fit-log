@@ -1,2 +1,453 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+
+
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* ================================
+   FitLog Theme
+================================ */
+
+:root {
+  --fitlog-bg: #0c0d10;
+  --fitlog-card: #15171d;
+  --fitlog-accent: #c2f800;
+  --fitlog-accent-hover: #d4ff33;
+  --fitlog-border: rgba(255, 255, 255, 0.1);
+  --fitlog-text-muted: #9ca3af;
+}
+
+/* ================================
+   Global
+================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--fitlog-bg);
+  color: white;
+}
+
+/* ================================
+   Buttons
+================================ */
+
+.fitlog-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border-radius: 0.5rem;
+  background: var(--fitlog-accent);
+  padding: 0.75rem 1.5rem;
+
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #000;
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.fitlog-btn-primary:hover {
+  transform: translateY(-3px);
+  background: var(--fitlog-accent-hover);
+  box-shadow: 0 8px 25px rgba(194, 248, 0, 0.2);
+}
+
+.fitlog-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary button */
+
+.fitlog-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border: 1px solid #4b5563;
+  border-radius: 0.5rem;
+
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.fitlog-btn-secondary:hover {
+  transform: translateY(-3px);
+  border-color: var(--fitlog-accent);
+  background: var(--fitlog-accent);
+  color: #000;
+}
+
+.fitlog-btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* ================================
+   Workout Card
+================================ */
+
+.fitlog-card {
+  overflow: hidden;
+
+  border: 1px solid var(--fitlog-border);
+  border-radius: 1rem;
+
+  background: var(--fitlog-card);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.fitlog-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(194, 248, 0, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* Card image */
+
+.fitlog-card-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.fitlog-card:hover .fitlog-card-image {
+  transform: scale(1.05);
+}
+
+/* Card title */
+
+.fitlog-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  transition: color 0.3s ease;
+}
+
+.fitlog-card:hover .fitlog-card-title {
+  color: var(--fitlog-accent);
+}
+
+/* ================================
+   Tags
+================================ */
+
+.fitlog-tag {
+  display: inline-flex;
+  align-items: center;
+
+  border-radius: 9999px;
+  background: var(--fitlog-accent);
+
+  padding: 0.25rem 0.75rem;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  color: #000;
+}
+
+/* ================================
+   Navbar
+================================ */
+
+.fitlog-nav-link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  border-radius: 9999px;
+
+  padding: 0.5rem 0.75rem;
+
+  color: #d1d5db;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.fitlog-nav-link:hover {
+  color: var(--fitlog-accent);
+}
+
+.fitlog-nav-link-active {
+  border-radius: 9999px;
+
+  background: rgba(60, 66, 38, 0.8);
+  padding: 0.5rem 0.75rem;
+
+  color: var(--fitlog-accent);
+}
+
+/* ================================
+   Counter badges
+================================ */
+
+.fitlog-badge {
+  display: inline-flex;
+  min-width: 1.75rem;
+  height: 1.75rem;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9999px;
+
+  padding: 0 0.5rem;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  transition: transform 0.3s ease;
+}
+
+.fitlog-badge:hover {
+  transform: scale(1.1);
+}
+
+.fitlog-badge-plan {
+  background: var(--fitlog-accent);
+  color: #000;
+}
+
+.fitlog-badge-saved {
+  border: 1px solid #4b5563;
+  color: #d1d5db;
+}
+
+.fitlog-badge-saved:hover {
+  border-color: var(--fitlog-accent);
+  color: var(--fitlog-accent);
+}
+
+/* ================================
+   Mobile menu links
+================================ */
+
+.fitlog-mobile-link {
+  display: block;
+
+  border-radius: 0.5rem;
+
+  padding: 0.75rem 1rem;
+
+  color: #d1d5db;
+
+  transition:
+    padding-left 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.fitlog-mobile-link:hover {
+  padding-left: 1.5rem;
+  background: rgba(194, 248, 0, 0.08);
+  color: var(--fitlog-accent);
+}
+
+/* ================================
+   Focus accessibility
+================================ */
+
+.fitlog-btn-primary:focus-visible,
+.fitlog-btn-secondary:focus-visible,
+.fitlog-nav-link:focus-visible,
+.fitlog-mobile-link:focus-visible {
+  outline: 2px solid var(--fitlog-accent);
+  outline-offset: 3px;
+}
+
+/* ================================
+   Responsive helpers
+================================ */
+
+@media (max-width: 640px) {
+  .fitlog-btn-primary,
+  .fitlog-btn-secondary {
+    width: 100%;
+  }
+}
+/* ================================
+   Navbar Hover Effects
+================================ */
+
+.fitlog-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+
+  color: #d1d5db;
+
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Animated underline */
+.fitlog-nav-link::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 0.15rem;
+
+  width: 0;
+  height: 2px;
+
+  background: var(--fitlog-accent);
+  border-radius: 9999px;
+
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.fitlog-nav-link:hover {
+  color: var(--fitlog-accent);
+}
+
+.fitlog-nav-link:hover::after {
+  width: 60%;
+}
+
+
+/* Active navigation item */
+
+.fitlog-nav-link-active {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+
+  background: rgba(60, 66, 38, 0.8);
+  color: var(--fitlog-accent);
+}
+
+.fitlog-nav-link-active::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: 0.15rem;
+
+  width: 60%;
+  height: 2px;
+
+  background: var(--fitlog-accent);
+  border-radius: 9999px;
+
+  transform: translateX(-50%);
+}
+
+
+/* Navbar counter hover */
+
+.fitlog-counter {
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.fitlog-counter:hover {
+  transform: scale(1.08);
+}
+
+
+/* Plan counter */
+
+.fitlog-counter-plan {
+  background: var(--fitlog-accent);
+  color: #000;
+}
+
+
+/* Saved counter */
+
+.fitlog-counter-saved {
+  border: 1px solid #4b5563;
+  color: #d1d5db;
+}
+
+.fitlog-counter-saved:hover {
+  border-color: var(--fitlog-accent);
+  color: var(--fitlog-accent);
+  box-shadow: 0 0 12px rgba(194, 248, 0, 0.12);
+}
+
+
+/* Logo hover */
+
+.fitlog-logo {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.fitlog-logo:hover {
+  transform: translateY(-1px);
+  color: var(--fitlog-accent);
+}
+
+
+/* Mobile menu link */
+
+.fitlog-mobile-link {
+  display: block;
+
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+
+  color: #d1d5db;
+
+  transition:
+    padding-left 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.fitlog-mobile-link:hover {
+  padding-left: 1.25rem;
+  background: rgba(194, 248, 0, 0.08);
+  color: var(--fitlog-accent);
+}
