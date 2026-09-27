@@ -1,1 +1,12 @@
 node_modules
+# Next.js build output and cache
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env*.local
+
+echo ".next/" >> .gitignore

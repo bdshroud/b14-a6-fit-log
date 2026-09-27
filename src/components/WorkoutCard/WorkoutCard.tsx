@@ -1,55 +1,79 @@
-<Link
-    href={`/exercise/${workout.id}`}
-    className="group block"
->
-    <article className="fitlog-card">
-        <div className="overflow-hidden">
-            <Image
-                src={workout.image}
-                alt={workout.name}
-                width={450}
-                height={350}
-                className="fitlog-card-image"
-            />
-        </div>
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaRegClock, FaRegStar } from 'react-icons/fa';
 
-        <div className="space-y-4 p-5">
+import { IWorkout } from '@/type/workoutType';
 
-            <div className="flex flex-wrap gap-2">
-                {workout.muscleGroups.map((group) => (
-                    <span
-                        key={group}
-                        className="fitlog-tag"
-                    >
-                        {group}
-                    </span>
-                ))}
-            </div>
+interface WorkoutCardProps {
+    workout: IWorkout;
+}
 
-            <h2 className="fitlog-card-title">
-                {workout.name}
-            </h2>
+const WorkoutCard = ({ workout }: WorkoutCardProps) => {
+    return (
+        <Link
+            href={`/exercise/${workout.id}`}
+            className="group block"
+        >
+            <article className="fitlog-card">
+                {/* Image */}
+                <div className="overflow-hidden">
+                    <Image
+                        src={workout.image}
+                        alt={workout.name}
+                        width={450}
+                        height={350}
+                        className="fitlog-card-image"
+                    />
+                </div>
 
-            <p className="text-sm text-gray-400">
-                {workout.equipment}
-            </p>
+                {/* Content */}
+                <div className="space-y-4 p-5">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                        {workout.muscleGroups.map((group) => (
+                            <span
+                                key={group}
+                                className="fitlog-tag"
+                            >
+                                {group}
+                            </span>
+                        ))}
+                    </div>
 
-            <div className="border-t border-gray-700" />
+                    {/* Name */}
+                    <h2 className="fitlog-card-title">
+                        {workout.name}
+                    </h2>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
-                <span>
-                    ⏱ {workout.duration} min
-                </span>
+                    {/* Equipment */}
+                    <p className="text-sm text-gray-400">
+                        {workout.equipment}
+                    </p>
 
-                <span>
-                    🔥 {workout.caloriesBurned} Kcal
-                </span>
+                    {/* Divider */}
+                    <div className="border-t border-gray-700" />
 
-                <span>
-                    ⭐ {workout.rating}
-                </span>
-            </div>
+                    {/* Stats */}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400">
+                        <span className="flex items-center gap-1">
+                            <FaRegClock />
+                            {workout.duration} min
+                        </span>
 
-        </div>
-    </article>
-</Link>
+                        <span className="flex items-center gap-1">
+                            <span aria-hidden="true">🔥</span>
+                            {workout.caloriesBurned} Kcal
+                        </span>
+
+                        <span className="flex items-center gap-1">
+                            <FaRegStar />
+                            {workout.rating}
+                        </span>
+                    </div>
+                </div>
+            </article>
+        </Link>
+    );
+};
+
+export default WorkoutCard;
